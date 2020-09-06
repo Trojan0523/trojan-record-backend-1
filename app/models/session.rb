@@ -13,14 +13,14 @@ class Session
 
 
   def check_email
-    user ||= User.find_by email: email
+    @user ||= User.find_by email: email
     if user == nil
       errors.add :email, :not_found
 
     end
   end
   def email_password_match
-    user ||=  User.find_by_email email
+    @user ||=  User.find_by_email email
     if user and not user.authenticate(password)
       errors.add :password, :missmatch
     end
